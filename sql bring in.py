@@ -5,8 +5,8 @@ import sqlite3 as sql
 
 #Read in Seth's tables --- staging
 #1- read in the cleaned csv to a dataframe
-cwd= os.getcwd() + '\\Documents\\ETL Project Data\\'
-#cwd= os.getcwd()
+#cwd= os.getcwd() + '\\Documents\\ETL Project Data\\'
+cwd= os.getcwd()
 #cocktail dataframe
 filepath=os.path.join(cwd,'ETL_Project_-SuperExtravagant-','csv_output','cocktails_cleaned.csv')
 df1=pd.read_csv(filepath,index_col=0)
@@ -37,13 +37,13 @@ tz_agg=tz.drop_duplicates(subset ="CityID",keep = 'first', inplace = False)
 
 
 
-#3 - make the tbales and push the data  
-#
-filepath=os.path.join(cwd,'SQLiteDB','ETL.db')
-conn = sql.connect(filepath)
-cur = conn.cursor()
+# #3 - make the tbales and push the data  
+# #
+# filepath=os.path.join(cwd,'SQLiteDB','ETL.db')
+# conn = sql.connect(filepath)
+# cur = conn.cursor()
 
-City.to_sql('Cities',conn, if_exists="replace")
-df1.to_sql('Cocktails',conn, if_exists="replace")
-df3.to_sql('CityJoin',conn, if_exists="replace")
-tz_agg.to_sql('TimeZones',conn, if_exists="replace")
+# City.to_sql('Cities',conn, if_exists="replace")
+# df1.to_sql('Cocktails',conn, if_exists="replace")
+# df3.to_sql('CityJoin',conn, if_exists="replace")
+# tz_agg.to_sql('TimeZones',conn, if_exists="replace")
